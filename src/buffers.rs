@@ -1,5 +1,6 @@
 use std::ops::{Index, IndexMut};
 
+/// A one-dimensional generic buffer (struct) of type `T`
 pub struct Buffer<T> {
     pub data: Vec<T>,
 }
@@ -24,6 +25,7 @@ impl<T> IndexMut<usize> for Buffer<T> {
     }
 }
 
+/// A two-dimensional generic buffer (struct) of type `T`
 pub struct Buffer2D<T> {
     pub data: Vec<Vec<T>>,
 }
