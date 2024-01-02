@@ -4,6 +4,12 @@ pub struct Buffer<T> {
     pub data: Vec<T>,
 }
 
+impl<T> Buffer<T> {
+    pub fn new(data: Vec<T>) -> Self {
+        Buffer { data }
+    }
+}
+
 impl<T> Index<usize> for Buffer<T> {
     type Output = T;
 
@@ -20,6 +26,12 @@ impl<T> IndexMut<usize> for Buffer<T> {
 
 pub struct Buffer2D<T> {
     pub data: Vec<Vec<T>>,
+}
+
+impl<T> Buffer2D<T> {
+    pub fn new(data: Vec<Vec<T>>) -> Self {
+        Buffer2D { data }
+    }
 }
 
 impl<T> Index<(usize, usize)> for Buffer2D<T> {
