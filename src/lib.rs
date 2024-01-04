@@ -29,7 +29,7 @@ mod tests {
         }
 
         fn shader_function(io: &mut IO) -> IO {
-            IO { x: io.x }
+            IO { x: io.x + 2.0 }
         }
 
         let mut shader = Shader::new(shader_function);
@@ -37,6 +37,6 @@ mod tests {
         let mut input = IO { x: 1.0 };
         let output = (shader.function)(&mut input);
 
-        assert_eq!(input.x, output.x);
+        assert_eq!(output.x, 3.0);
     }
 }
