@@ -44,30 +44,30 @@ mod tests {
     fn test_raster() {
         use crate::raster::{edge_function, inside_triangle, Point2D};
 
-        let start = Point2D { x: 1.0, y: 0.0 };
-        let end = Point2D { x: 1.0, y: 1.0 };
+        let start = Point2D { x: 0.0, y: 0.0 };
+        let end = Point2D { x: 0.0, y: 1.0 };
 
         assert_eq!(
-            edge_function(&start, &end, &Point2D { x: 2.0, y: 0.5 }),
+            edge_function(&start, &end, &Point2D { x: 1.0, y: 0.5 }),
             true
         );
         assert_eq!(
-            edge_function(&start, &end, &Point2D { x: 0.0, y: 0.5 }),
+            edge_function(&start, &end, &Point2D { x: -1.0, y: 0.5 }),
             false
         );
 
         let triangle = [
-            Point2D { x: 0.0, y: 0.0 },
-            Point2D { x: 0.5, y: 1.0 },
-            Point2D { x: 1.0, y: 0.0 },
+            Point2D { x: -0.5, y: 0.0 },
+            Point2D { x: 0.0, y: 1.0 },
+            Point2D { x: 0.5, y: 0.0 },
         ];
 
         assert_eq!(
-            inside_triangle(&triangle, &Point2D { x: 0.5, y: 0.5 }),
+            inside_triangle(&triangle, &Point2D { x: 0.0, y: 0.5 }),
             true
         );
         assert_eq!(
-            inside_triangle(&triangle, &Point2D { x: 0.0, y: 1.0 }),
+            inside_triangle(&triangle, &Point2D { x: 0.0, y: 2.0 }),
             false
         );
     }
