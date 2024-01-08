@@ -12,6 +12,22 @@ pub struct Point2D {
 /// * `end` - A reference to a `Point2D` (the end of the given line segment)
 /// * `point` - A reference to a `Point2D` (the given point to be evaluated)
 ///
+/// ### Examples
+///
+/// ```
+/// use pandora::raster::{edge_function, Point2D};
+///
+/// // The line segment...
+/// let start = Point2D { x: 0.0, y: 0.0 };
+/// let end = Point2D { x: 0.0, y: 1.0 };
+///
+/// // The point to be evaluated...
+/// let point = Point2D { x: 1.0, y: 0.5 };
+///
+/// // assert_eq! the point is to the right of the given line segment...
+/// assert_eq!(edge_function(&start, &end, &point), true);
+/// ```
+///
 pub fn edge_function(start: &Point2D, end: &Point2D, point: &Point2D) -> bool {
     (point.x - start.x) * (end.y - start.y) - (point.y - start.y) * (end.x - start.x) >= 0.0
 }
@@ -22,6 +38,25 @@ pub fn edge_function(start: &Point2D, end: &Point2D, point: &Point2D) -> bool {
 ///
 /// * `triangle` - A reference to a 3-wide array of `Point2D`(s) (the given triangle)
 /// * `point` - A reference to a `Point2D` (the given point to be evaluated)
+///
+/// ### Examples
+///
+/// ```
+/// use pandora::raster::{inside_triangle, Point2D};
+///
+/// // The triangle...
+/// let triangle = [
+///     Point2D { x: -0.5, y: 0.0 },
+///     Point2D { x: 0.0, y: 1.0 },
+///     Point2D { x: 0.5, y: 0.0 },
+/// ];
+///
+/// // The point to be evaluated...
+/// let point = Point2D { x: 0.0, y: 0.5 };
+///
+/// // assert_eq! the point is within the given triangle...
+/// assert_eq!(inside_triangle(&triangle, &point), true);
+/// ```
 ///
 pub fn inside_triangle(triangle: &[Point2D; 3], point: &Point2D) -> bool {
     for i in 0..3 {
