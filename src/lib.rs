@@ -1,4 +1,5 @@
 pub mod buffers;
+pub mod math;
 pub mod raster;
 pub mod shader;
 
@@ -25,7 +26,8 @@ mod tests {
 
     #[test]
     fn test_raster() {
-        use crate::raster::{inside_triangle, Point2D};
+        use crate::math::Point2D;
+        use crate::raster::inside_triangle;
 
         let triangle = [
             Point2D { x: -0.5, y: 0.0 },

@@ -1,8 +1,4 @@
-/// A two-dimensional non-generic point (struct) with an `x` (x-coordinate) and `y` (y-coordinate)
-pub struct Point2D {
-    pub x: f32,
-    pub y: f32,
-}
+use crate::math::Point2D;
 
 /// A mathematical function that determines if a point (`point`) is to the left, right, or directly on a given line segment (`start` to `end`)
 ///
@@ -15,7 +11,8 @@ pub struct Point2D {
 /// ### Examples
 ///
 /// ```
-/// use pandora::raster::{edge_function, Point2D};
+/// use pandora::math::Point2D;
+/// use pandora::raster::edge_function;
 ///
 /// // The line segment...
 /// let start = Point2D { x: 0.0, y: 0.0 };
@@ -42,7 +39,8 @@ pub fn edge_function(start: &Point2D, end: &Point2D, point: &Point2D) -> bool {
 /// ### Examples
 ///
 /// ```
-/// use pandora::raster::{inside_triangle, Point2D};
+/// use pandora::math::Point2D;
+/// use pandora::raster::inside_triangle;
 ///
 /// // The triangle...
 /// let triangle = [
