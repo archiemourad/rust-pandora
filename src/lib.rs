@@ -2,6 +2,7 @@ pub mod buffers;
 pub mod math;
 pub mod proxy;
 pub mod raster;
+pub mod vertex;
 
 #[cfg(test)]
 mod tests {
