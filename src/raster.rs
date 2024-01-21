@@ -57,8 +57,10 @@ pub fn edge_function(start: &Point2D, end: &Point2D, point: &Point2D) -> bool {
 /// ```
 ///
 pub fn inside_triangle(triangle: &[Point2D; 3], point: &Point2D) -> bool {
-    for i in 0..3 {
-        if !edge_function(&triangle[i], &triangle[(i + 1) % 3], point) {
+    let segments = [(0, 1), (1, 2), (2, 0)];
+
+    for segment in segments {
+        if !edge_function(&triangle[segment.0], &triangle[segment.1], point) {
             return false;
         }
     }
