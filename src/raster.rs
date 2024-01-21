@@ -29,6 +29,8 @@ pub fn edge_function(start: &Point2D, end: &Point2D, point: &Point2D) -> bool {
     (point.x - start.x) * (end.y - start.y) - (point.y - start.y) * (end.x - start.x) >= 0.0
 }
 
+const SEGMENTS: [(usize, usize); 3] = [(0, 1), (1, 2), (2, 0)];
+
 /// A proxy-function for `edge_function` that determines if a point (`point`) is within a given triangle (`triangle`)
 ///
 /// ### Arguments
@@ -57,9 +59,7 @@ pub fn edge_function(start: &Point2D, end: &Point2D, point: &Point2D) -> bool {
 /// ```
 ///
 pub fn inside_triangle(triangle: &[Point2D; 3], point: &Point2D) -> bool {
-    let segments = [(0, 1), (1, 2), (2, 0)];
-
-    for segment in segments {
+    for segment in SEGMENTS {
         if !edge_function(&triangle[segment.0], &triangle[segment.1], point) {
             return false;
         }
