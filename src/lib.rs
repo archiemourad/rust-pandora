@@ -1,28 +1,28 @@
 pub mod buffers;
 pub mod math;
-pub mod proxy;
 pub mod raster;
 pub mod vertex;
+pub mod wrapper;
 
 #[cfg(test)]
 mod tests {
     #[test]
-    fn test_proxy() {
-        use crate::proxy::Proxy;
+    fn test_wrapper() {
+        use crate::wrapper::Wrapper;
 
         struct IO {
             x: f32,
         }
 
-        fn proxy_function(io: &mut IO) -> IO {
+        fn wrapper_function(io: &mut IO) -> IO {
             IO { x: io.x + 2.0 }
         }
 
-        let mut proxy = Proxy::new(proxy_function);
+        let mut wrapper = Wrapper::new(wrapper_function);
 
         let mut input = IO { x: 1.0 };
 
-        assert_eq!((proxy.function)(&mut input).x, 3.0);
+        assert_eq!((wrapper.function)(&mut input).x, 3.0);
     }
 
     #[test]
